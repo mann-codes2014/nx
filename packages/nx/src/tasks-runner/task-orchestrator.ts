@@ -526,8 +526,12 @@ export class TaskOrchestrator {
         terminalOutput,
       };
     } catch (e) {
+      if (process.env.NX_VERBOSE_LOGGING === 'true') {
+        console.error(e);
+      }
       return {
         code: 1,
+        terminalOutput: e.stack ?? e.message ?? '',
       };
     }
   }
