@@ -21,7 +21,7 @@ describe('app', () => {
   it('should add a .gitkeep file to the public directory', async () => {
     const name = uniq();
     await applicationGenerator(tree, {
-      name,
+      directory: name,
       style: 'css',
     });
 
@@ -31,7 +31,7 @@ describe('app', () => {
   it('should update tags and implicit dependencies', async () => {
     const name = uniq();
     await applicationGenerator(tree, {
-      name,
+      directory: name,
       style: 'css',
       tags: 'one,two',
     });
@@ -54,7 +54,7 @@ describe('app', () => {
 
     const name = uniq();
     await applicationGenerator(tree, {
-      name,
+      directory: name,
       style: 'css',
     });
 
@@ -66,7 +66,7 @@ describe('app', () => {
     it('should generate files for app layout', async () => {
       const name = uniq();
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'css',
       });
 
@@ -93,9 +93,9 @@ describe('app', () => {
       const name = uniq();
       await applicationGenerator(tree, {
         name,
+        directory: '.',
         style: 'css',
         appDir: true,
-        rootProject: true,
       });
 
       const tsConfig = readJson(tree, 'tsconfig.json');
@@ -114,9 +114,9 @@ describe('app', () => {
       const name = uniq();
       await applicationGenerator(tree, {
         name,
+        directory: '.',
         style: 'none',
         appDir: true,
-        rootProject: true,
       });
 
       const content = tree.read('src/app/page.tsx').toString();
@@ -131,7 +131,7 @@ describe('app', () => {
     it('should generate files for pages layout', async () => {
       const name = uniq();
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'css',
         appDir: false,
         src: false,
@@ -145,7 +145,7 @@ describe('app', () => {
     it('should update configurations', async () => {
       const name = uniq();
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'css',
       });
 
@@ -158,7 +158,7 @@ describe('app', () => {
     it('should generate an unstyled component page', async () => {
       const name = uniq();
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'none',
         appDir: false,
         src: false,
@@ -176,7 +176,7 @@ describe('app', () => {
     it('should generate scss styles', async () => {
       const name = uniq();
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'scss',
       });
 
@@ -214,7 +214,7 @@ describe('app', () => {
     it('should generate less styles', async () => {
       const name = uniq();
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'less',
       });
 
@@ -252,7 +252,7 @@ describe('app', () => {
     it('should generate styled-components styles', async () => {
       const name = uniq();
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'styled-components',
       });
 
@@ -335,7 +335,7 @@ describe('app', () => {
       const name = uniq();
 
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: '@emotion/styled',
       });
 
@@ -356,7 +356,7 @@ describe('app', () => {
       const name = uniq();
 
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: '@emotion/styled',
       });
 
@@ -373,7 +373,7 @@ describe('app', () => {
       const name = 'my-app';
 
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'styled-jsx',
       });
 
@@ -437,7 +437,7 @@ describe('app', () => {
     const name = uniq();
 
     await applicationGenerator(tree, {
-      name,
+      directory: name,
       style: 'css',
     });
 
@@ -450,7 +450,7 @@ describe('app', () => {
     const name = uniq();
 
     await applicationGenerator(tree, {
-      name,
+      directory: name,
       style: 'css',
     });
 
@@ -463,7 +463,7 @@ describe('app', () => {
     const name = uniq();
 
     await applicationGenerator(tree, {
-      name,
+      directory: name,
       style: 'css',
     });
 
@@ -499,7 +499,7 @@ describe('app', () => {
     it('should not generate test configuration', async () => {
       const name = uniq();
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'css',
         unitTestRunner: 'none',
       });
@@ -513,7 +513,7 @@ describe('app', () => {
       const name = uniq();
 
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'css',
         e2eTestRunner: 'none',
       });
@@ -526,7 +526,7 @@ describe('app', () => {
       const name = uniq();
 
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'css',
         e2eTestRunner: 'cypress',
         addPlugin: true,
@@ -547,7 +547,7 @@ describe('app', () => {
       const name = uniq();
 
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'css',
         e2eTestRunner: 'playwright',
         addPlugin: true,
@@ -567,7 +567,7 @@ describe('app', () => {
     const name = uniq();
 
     await applicationGenerator(tree, {
-      name,
+      directory: name,
       style: 'css',
     });
 
@@ -583,7 +583,7 @@ describe('app', () => {
         const name = uniq();
 
         await applicationGenerator(tree, {
-          name,
+          directory: name,
           style: 'css',
         });
 
@@ -613,7 +613,7 @@ describe('app', () => {
         const name = uniq();
 
         await applicationGenerator(tree, {
-          name,
+          directory: name,
           style: 'css',
         });
 
@@ -679,9 +679,9 @@ describe('app', () => {
 
         await applicationGenerator(tree, {
           name,
+          directory: '.',
           style: 'css',
           appDir: true,
-          rootProject: true,
         });
 
         const eslintJSON = readJson(tree, '.eslintrc.json');
@@ -703,9 +703,9 @@ describe('app', () => {
 
         await applicationGenerator(tree, {
           name,
+          directory: '.',
           style: 'css',
           appDir: true,
-          rootProject: true,
           src: true,
         });
 
@@ -727,9 +727,9 @@ describe('app', () => {
 
         await applicationGenerator(tree, {
           name,
+          directory: '.',
           style: 'css',
           appDir: true,
-          rootProject: true,
           src: false,
         });
 
@@ -751,9 +751,9 @@ describe('app', () => {
 
         await applicationGenerator(tree, {
           name,
+          directory: '.',
           style: 'css',
           appDir: false,
-          rootProject: true,
           src: false,
         });
 
@@ -774,7 +774,7 @@ describe('app', () => {
       const name = uniq();
 
       await applicationGenerator(tree, {
-        name,
+        directory: name,
         style: 'css',
         js: true,
       });
@@ -799,7 +799,7 @@ describe('app (legacy)', () => {
   let originalEnv;
 
   const schema: Schema = {
-    name: 'app',
+    directory: 'app',
     appDir: true,
     unitTestRunner: 'jest',
     style: 'css',
