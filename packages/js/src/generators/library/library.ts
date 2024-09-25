@@ -23,6 +23,7 @@ import {
 import {
   determineProjectNameAndRootOptions,
   type ProjectNameAndRootOptions,
+  ensureProjectName,
 } from '@nx/devkit/src/generators/project-name-and-root-utils';
 
 import { addBuildTargetDefaults } from '@nx/devkit/src/generators/target-defaults-utils';
@@ -47,7 +48,6 @@ import {
 } from '../../utils/versions';
 import jsInitGenerator from '../init/init';
 import setupVerdaccio from '../setup-verdaccio/generator';
-import { ensureProjectName } from '@nx/js/src/utils/ensure-project-name';
 
 const defaultOutputDirectory = 'dist';
 
